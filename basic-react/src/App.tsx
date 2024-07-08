@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, Dispatch, SetStateAction, useEffect, useState } from "react";
 
 function App() {
     // 배열 구조분해 할당을 활용
     // useState의 인자는 초기값을 넣어줌
     const [count, setCount] = useState(0);
+    const [value, setValue] = useInput('');
 
     // useEffect가 실행되는 시점에 DOM이 업데이트되었음을 보장
     useEffect(() => {
@@ -20,8 +21,20 @@ function App() {
         <div>
             <p>you clicked {count} times</p>
             <button onClick={() => setCount(count + 1)}>Click me</button>
+            <input type="text" onChange={setValue} value={value} />
         </div>
     );
 }
 
 export default App;
+
+type ReturnsType = [string, (e: React.FormEvent<HTMLInputElement>) => void, Dispatch<SetStateAction<string>>]
+
+const useInput = (initValue: string): ReturnsType => {
+    const [value, setValue] = useState(initValue);
+    const handler = (e: React.FormEvent<HTMLInputElement>) => {
+        setValue(e.currentTarget.value);
+    }
+
+    return [value, handler, setValue];
+}
