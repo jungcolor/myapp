@@ -1,10 +1,11 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 
 function Hook() {
     // 배열 구조분해 할당을 활용
     // useState의 인자는 초기값을 넣어줌
     const [count, setCount] = useState(0);
     const [value, setValue] = useInput('');
+    const inputRef = useRef<HTMLInputElement>(null);
 
     // useEffect가 실행되는 시점에 DOM이 업데이트되었음을 보장
     useEffect(() => {
@@ -17,11 +18,16 @@ function Hook() {
         // 정리(clean up)가 필요하지 않은 경우 아무것도 반환하지 않음
     });
 
+    useEffect(() => {
+        // useRef >>> inputRef.current
+        inputRef.current?.focus();
+    });
+
     return (
         <div>
             <p>you clicked {count} times</p>
             <button onClick={() => setCount(count + 1)}>Click me</button>
-            <input type="text" onChange={setValue} value={value} />
+            <input type="text" onChange={setValue} value={value} ref={inputRef} />
         </div>
     );
 }
