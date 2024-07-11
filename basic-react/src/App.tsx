@@ -1,18 +1,17 @@
-import { useInput } from "./practice/custom-hook";
-import Hook from "./practice/hook";
+import useFetch from "./practice/custom-hook-fetch";
 
-function displayMessage(message: string) {
-    alert(message);
-}
+const baseUrl = "https://jsonplaceholder.typicode.com";
 
 function App() {
-    const [inputValue, handleChange, handleSubmit] = useInput("", displayMessage);
+    const { data: userData } = useFetch(baseUrl, "users");
+    const { data: postData } = useFetch(baseUrl, "posts");
 
     return (
-        <div id="root">
-            <h1>useInput</h1>
-            <input value={inputValue} onChange={handleChange} />
-            <button type="button" onClick={handleSubmit}>확인</button>
+        <div>
+            <h1>User</h1>
+            {userData && <pre>{JSON.stringify(userData[0], null, 2)}</pre>}
+            <h1>Post</h1>
+            {postData && <pre>{JSON.stringify(postData[0], null, 2)}</pre>}
         </div>
     );
 }

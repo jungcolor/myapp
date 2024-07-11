@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 
 type ReturnsType = [string, (e: React.FormEvent<HTMLInputElement>) => void, () => void];
 
