@@ -1,17 +1,21 @@
-import useFetch from "./practice/custom-hook-fetch";
-
-const baseUrl = "https://jsonplaceholder.typicode.com";
+import { useEffect, useRef, useState } from "react";
 
 function App() {
-    const { data: userData } = useFetch(baseUrl, "users");
-    const { data: postData } = useFetch(baseUrl, "posts");
+    const [count, setCount] = useState(0);
+    const renderCount = useRef(1);
+
+    useEffect(() => {
+        console.log("랜더링! ", renderCount.current = renderCount.current + 1);
+    });
+
+    const increseCount = () => {
+        setCount(count + 1);
+    };
 
     return (
         <div>
-            <h1>User</h1>
-            {userData && <pre>{JSON.stringify(userData[0], null, 2)}</pre>}
-            <h1>Post</h1>
-            {postData && <pre>{JSON.stringify(postData[0], null, 2)}</pre>}
+            <p>{count}</p>
+            <button type="button" onClick={increseCount}>숫자 올려</button>
         </div>
     );
 }
