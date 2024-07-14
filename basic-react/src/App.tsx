@@ -1,23 +1,16 @@
-import { useEffect, useRef, useState } from "react";
+import Page from "./layout/Page";
+import "./app.css";
+import { useState, Dispatch, SetStateAction } from "react";
+
+export type Props = {
+    isDark: boolean;
+    setIsDark?: Dispatch<SetStateAction<boolean>>;
+};
 
 function App() {
-    const [count, setCount] = useState(0);
-    const renderCount = useRef(1);
+    const [isDark, setIsDark] = useState(false);
 
-    useEffect(() => {
-        console.log("랜더링! ", renderCount.current = renderCount.current + 1);
-    });
-
-    const increseCount = () => {
-        setCount(count + 1);
-    };
-
-    return (
-        <div>
-            <p>{count}</p>
-            <button type="button" onClick={increseCount}>숫자 올려</button>
-        </div>
-    );
+    return <Page isDark={isDark} setIsDark={setIsDark} />;
 }
 
 export default App;
