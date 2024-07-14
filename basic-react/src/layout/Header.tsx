@@ -1,12 +1,16 @@
-import { Props } from "../App";
+import { useContext } from "react";
+import { ThemeContext, UserContext } from "../context/ThemeContext";
 
-function Header({ isDark }: Props) {
+function Header() {
+    const { isDark } = useContext(ThemeContext);
+    const user = useContext(UserContext);
+
     return (
         <header className="header" style={{
             backgroundColor: isDark ? "black" : "lightgrey",
             color: isDark ? "white" : "black"
         }}>
-            <h1>Welcome 홍길동!</h1>
+            <h1>Welcome {user}!</h1>
         </header>
     )
 }

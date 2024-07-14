@@ -1,6 +1,9 @@
-import { Props } from "../App";
+import { useContext } from "react";
+import { ThemeContext } from "../context/ThemeContext";
 
-const Footer = ({ isDark, setIsDark }: Props) => {
+const Footer = () => {
+    const { isDark, setIsDark } = useContext(ThemeContext);
+
     const toggleTheme = () => {
         setIsDark?.(!isDark);
     }

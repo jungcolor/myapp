@@ -1,12 +1,16 @@
-import { Props } from "../App";
+import { useContext } from "react";
+import { ThemeContext, UserContext } from "../context/ThemeContext";
 
-const Contents = ({ isDark }: Props) => {
+const Contents = () => {
+    const { isDark } = useContext(ThemeContext);
+    const user = useContext(UserContext);
+
     return (
         <main className="contents" style={{
             backgroundColor: isDark ? "black" : "white",
             color: isDark ? "white" : "black"
         }}>
-            <p>홍길동님, 좋은 하루 되세요</p>
+            <p>{user}님, 좋은 하루 되세요</p>
         </main>
     )
 }
