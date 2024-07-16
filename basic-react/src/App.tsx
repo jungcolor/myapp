@@ -1,17 +1,42 @@
-import Page from "./layout/Page";
 import "./app.css";
 import { useState } from "react";
-import { ThemeContext, UserContext } from "./context/ThemeContext";
+
+const hardCalculate = (number: number) => {
+    console.log("어려운 계산!");
+    for (let i = 0; i < 999999999; i++) { }
+    return number + 10000;
+}
+
+const easyCalculate = (number: number) => {
+    console.log("쉬운 계산");
+    return number + 1;
+}
 
 const App = () => {
-    const [isDark, setIsDark] = useState(false);
+    const [hardNumber, setHardNumber] = useState(1);
+    const [easyNumber, setEasyNumber] = useState(1);
+
+    const hardSum = hardCalculate(hardNumber);
+    const easySum = easyCalculate(easyNumber);
 
     return (
-        <UserContext.Provider value={"사용자"}>
-            <ThemeContext.Provider value={{ isDark, setIsDark }}>
-                <Page />
-            </ThemeContext.Provider>
-        </UserContext.Provider>
+        <div>
+            <h3>어려운 계산기</h3>
+            <input
+                type="number"
+                value={hardNumber}
+                onChange={(e) => setHardNumber(parseInt(e.target.value))}
+            />
+            <span> + 10000 = {hardSum}</span>
+
+            <h3>쉬운 계산기</h3>
+            <input
+                type="number"
+                value={easyNumber}
+                onChange={(e) => setEasyNumber(parseInt(e.target.value))}
+            />
+            <span> + 1 = {easySum}</span>
+        </div>
     );
 }
 
