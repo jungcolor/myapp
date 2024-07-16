@@ -5,13 +5,13 @@ function App() {
     const [size, setSizes] = useState<number>(100);
     const [isDark, setIsDark] = useState(false);
 
-    const createBoxStyle = () => {
+    const createBoxStyle = useCallback(() => {
         return {
             backgroundColor: "pink",
             width: `${size}px`,
             height: `${size}px`
         };
-    };
+    }, [size]);
 
     return (
         <div style={{
