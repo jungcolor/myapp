@@ -10,6 +10,5 @@ var personContext;
         return Person;
     }());
     var tom = new Person("hello");
-    tom.msg = "hollo";
     tom.speak();
 })(personContext || (personContext = {}));

@@ -1,6 +1,6 @@
 namespace personContext {
     class Person {
-        constructor(private msg) {}
+        constructor(private readonly msg) {}
         speak() {
             console.log(this.msg);
         }
