@@ -1,5 +1,5 @@
 function canDrive(usr) {
-    console.log("user is", usr.name);
+    console.log(`user is`, usr.name);
     if (usr.age >= 16) {
         console.log("allow to drive");
     }
@@ -7,7 +7,7 @@ function canDrive(usr) {
         console.log("do not allow to drive");
     }
 }
-var tom = {
+const tom = {
     name: "tom",
     age: 20,
 };

@@ -1,28 +1,25 @@
-var ClassA = /** @class */ (function () {
-    function ClassA() {
-    }
-    ClassA.setFullName = function (name) {
+class ClassA {
+    constructor() { }
+    static setFullName(name) {
         ClassA.typeName = name;
-    };
-    ClassA.getFullName = function () {
-        return "ClassA ".concat(ClassA.typeName);
-    };
-    return ClassA;
-}());
-var a = new ClassA();
-var typeName = ClassA.setFullName("nori");
+    }
+    static getFullName() {
+        return `ClassA ${ClassA.typeName}`;
+    }
+}
+const a = new ClassA();
+const typeName = ClassA.setFullName("nori");
 console.log(ClassA.getFullName());
-var Runner = /** @class */ (function () {
-    function Runner(typeName) {
+class Runner {
+    constructor(typeName) {
         this.typeName = typeName;
     }
-    Runner.prototype.run = function () {
+    run() {
         Runner.lastRunTypeName = this.typeName;
-    };
-    return Runner;
-}());
-var run1 = new Runner("a");
-var run2 = new Runner("b");
+    }
+}
+const run1 = new Runner("a");
+const run2 = new Runner("b");
 run2.run();
 run1.run();
 console.log(Runner.lastRunTypeName);
