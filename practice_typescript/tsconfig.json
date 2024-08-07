@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
         "module": "commonjs",
-        "target": "ES5",
-        "sourceMap": true,
+        "target": "ES2015",
+        "sourceMap": false,
         "experimentalDecorators": true,
         "outDir": "build"
     },
